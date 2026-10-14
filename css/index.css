@@ -1,0 +1,809 @@
+/* ============================================================
+   小兔鲜儿 PC 首页 样式
+   实现方式：HTML5 语义化标签 + 现代布局（flexbox / grid）
+   ============================================================ */
+
+/* 颜色变量 */
+:root {
+  --green: #5eb69c;        /* 浅绿：顶部登录、导航激活文字 */
+  --green-dark: #00be9a;   /* 强调绿：按钮、激活背景 */
+  --green-service: #6bbfae; /* 服务图标绿 */
+  --red: #af2f22;          /* 商品价格红 */
+  --red-2: #aa2113;        /* 新鲜好物/专题价格红 */
+  --text: #333333;         /* 主文字 */
+  --gray: #a1a1a1;         /* 浅灰文字 */
+  --gray-2: #969696;       /* 页脚灰 */
+  --gray-3: #666666;       /* 元信息灰 */
+  --gray-4: #cccccc;       /* 搜索占位灰 */
+  --bg-gray: #f5f5f5;      /* 灰色背景 */
+  --bg-card: #eef9f4;      /* 新鲜好物信息区背景 */
+  --line: #e8e8e8;         /* 分割线 */
+}
+
+/* 基础重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  background: #fff;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  border: 0;
+}
+
+/* 版心容器 */
+.container {
+  width: 1240px;
+  margin: 0 auto;
+}
+
+/* ============ 顶部导航 ============ */
+.topbar {
+  height: 52px;
+  background: #333333;
+  line-height: 52px;
+}
+
+.topbar-wrap {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.topbar-links {
+  display: flex;
+  align-items: center;
+}
+
+.topbar-links li {
+  position: relative;
+  padding: 0 18px;
+  font-size: 14px;
+}
+
+.topbar-links li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 12px;
+  background: #999999;
+}
+
+.topbar-links li:first-child::before {
+  display: none;
+}
+
+.topbar-links a {
+  color: #ffffff;
+}
+
+.topbar-links a:hover {
+  color: var(--green);
+}
+
+.topbar-links .login {
+  color: var(--green);
+}
+
+.topbar-links .phone {
+  display: flex;
+  align-items: center;
+}
+
+.topbar-links .phone img {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+}
+
+/* ============ 头部 ============ */
+.header {
+  height: 132px;
+}
+
+.header-wrap {
+  display: flex;
+  align-items: center;
+  height: 132px;
+}
+
+.logo img {
+  width: 200px;
+  height: 88px;
+}
+
+.nav {
+  display: flex;
+  margin-left: 41px;
+}
+
+.nav li {
+  margin-right: 48px;
+  font-size: 16px;
+}
+
+.nav li:last-child {
+  margin-right: 0;
+}
+
+.nav a {
+  color: var(--text);
+  line-height: 34px;
+  position: relative;
+}
+
+.nav a:hover {
+  color: var(--green);
+}
+
+.nav a.active {
+  color: var(--green);
+}
+
+.nav a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--green);
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  width: 170px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #f4f4f4;
+}
+
+.search img {
+  width: 16px;
+  height: 16px;
+}
+
+.search span {
+  margin-left: 6px;
+  font-size: 16px;
+  color: var(--gray-4);
+}
+
+.cart {
+  position: relative;
+  margin-left: 21px;
+}
+
+.cart img {
+  width: 24px;
+  height: 24px;
+}
+
+.cart .badge {
+  position: absolute;
+  top: -9px;
+  right: -12px;
+  min-width: 20px;
+  height: 15px;
+  padding: 0 4px;
+  border-radius: 7.5px;
+  background: #e26237;
+  color: #fff;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+}
+
+/* ============ banner ============ */
+.banner {
+  background: var(--bg-gray);
+}
+
+.banner-wrap {
+  position: relative;
+  height: 500px;
+}
+
+.banner-img img {
+  width: 1240px;
+  height: 500px;
+}
+
+.category {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 250px;
+  height: 500px;
+  background: #000000;
+}
+
+.category li {
+  height: 50px;
+}
+
+.category li a {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  padding: 0 20px;
+  color: #ffffff;
+}
+
+.category li em {
+  font-style: normal;
+  font-size: 16px;
+  width: 40px;
+  margin-right: 10px;
+}
+
+.category li span {
+  font-size: 14px;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.category li a::after {
+  content: ">";
+  font-size: 14px;
+  color: #ffffff;
+  margin-left: 8px;
+}
+
+.category li.active {
+  background: var(--green-dark);
+}
+
+.category li:hover {
+  background: var(--green-dark);
+}
+
+.dots {
+  position: absolute;
+  right: 20px;
+  bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.dots li {
+  margin-left: 10px;
+}
+
+.dots li:first-child {
+  margin-left: 0;
+}
+
+.dots img {
+  display: block;
+}
+
+/* ============ 通用：区块标题 ============ */
+.section {
+  margin-bottom: 40px;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  height: 42px;
+  margin-bottom: 40px;
+}
+
+.section-head h2 {
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 42px;
+}
+
+.section-head > p {
+  margin-left: 20px;
+  font-size: 16px;
+  color: var(--gray);
+}
+
+.section-head .more {
+  margin-left: auto;
+  font-size: 16px;
+  color: var(--gray);
+}
+
+.section-head .more i {
+  font-style: normal;
+  margin-left: 4px;
+}
+
+.section-head .more:hover {
+  color: var(--green);
+}
+
+/* 分类区块：标题右侧的标签页 */
+.category-products .section-head h2 {
+  margin-right: 30px;
+}
+
+.category-products .tabs {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+  margin-left: auto;
+}
+
+.category-products .tabs li {
+  height: 20px;
+  line-height: 20px;
+  padding: 0 10px;
+  font-size: 16px;
+}
+
+.category-products .tabs li a {
+  color: var(--text);
+}
+
+.category-products .tabs li.active {
+  background: var(--green-dark);
+}
+
+.category-products .tabs li.active a {
+  color: #ffffff;
+}
+
+.category-products .tabs li a:hover {
+  color: var(--green);
+}
+
+.category-products .more {
+  margin-left: 0;
+}
+
+/* ============ 新鲜好物 ============ */
+.fresh-list {
+  display: grid;
+  grid-template-columns: repeat(4, 304px);
+  justify-content: space-between;
+}
+
+.fresh-list li {
+  width: 304px;
+}
+
+.fresh-list li > a img {
+  width: 304px;
+  height: 304px;
+}
+
+.fresh-list .info {
+  height: 100px;
+  padding: 16px 20px 0;
+  background: var(--bg-card);
+}
+
+.fresh-list .info h3 {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fresh-list .price {
+  margin-top: 10px;
+  font-size: 22px;
+  color: var(--red-2);
+}
+
+.fresh-list .price span {
+  font-size: 18px;
+}
+
+/* ============ 人气推荐 ============ */
+.popular-list {
+  display: grid;
+  grid-template-columns: repeat(4, 304px);
+  justify-content: space-between;
+}
+
+.popular-list li {
+  width: 304px;
+}
+
+.popular-list li > a img {
+  width: 304px;
+  height: 305px;
+}
+
+.popular-list .info {
+  height: 100px;
+  padding: 16px 20px 0;
+  background: #ffffff;
+}
+
+.popular-list .info h3 {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text);
+}
+
+.popular-list .info p {
+  margin-top: 10px;
+  font-size: 16px;
+  color: var(--gray);
+}
+
+/* ============ 热门品牌 ============ */
+.brands {
+  background: var(--bg-gray);
+  padding: 40px 0;
+  margin-bottom: 40px;
+}
+
+.brands .section-head .arrows {
+  margin-left: auto;
+  display: flex;
+}
+
+.brands .section-head .arrows a {
+  width: 20px;
+  height: 20px;
+  margin-left: 12px;
+}
+
+.brands .section-head .arrows img {
+  width: 20px;
+  height: 20px;
+}
+
+.brands-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.brands-list li a img {
+  width: 244px;
+  height: 306px;
+}
+
+/* ============ 分类商品（生鲜/服饰/餐厨/居家） ============ */
+.cp-body {
+  display: flex;
+}
+
+.intro-card {
+  width: 248px;
+  margin-right: 24px;
+}
+
+.intro-card img {
+  width: 248px;
+  height: 610px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 242px);
+  flex: 1;
+}
+
+.product-card {
+  width: 242px;
+  height: 305px;
+  background: #ffffff;
+  position: relative;
+}
+
+.product-card:hover {
+  border: 2px solid var(--green-dark);
+}
+
+.product-card .thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 180px;
+  margin: 10px 21px 0;
+}
+
+.product-card .thumb img {
+  max-width: 200px;
+  max-height: 180px;
+}
+
+.product-card h3 {
+  height: 57px;
+  margin: 10px 21px 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  color: var(--text);
+  overflow: hidden;
+}
+
+.product-card .price {
+  margin: 7px 21px 0;
+  height: 31px;
+  line-height: 31px;
+  font-size: 22px;
+  color: var(--red);
+}
+
+.product-card .price i {
+  font-style: normal;
+  font-size: 16px;
+}
+
+/* 激活卡片的“找相似 / 发现更多宝贝”快捷操作 */
+.product-card.active {
+  border: 2px solid var(--green-dark);
+}
+
+.product-card .quick-actions {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 83px;
+  padding-top: 16px;
+  text-align: center;
+  background: var(--green-dark);
+}
+
+.product-card .quick-actions .find {
+  display: inline-block;
+  font-size: 18px;
+  color: #ffffff;
+  line-height: 25px;
+}
+
+.product-card .quick-actions .line {
+  display: block;
+  width: 120px;
+  height: 1px;
+  margin: 8px auto;
+  background: #ffffff;
+}
+
+.product-card .quick-actions .discover {
+  display: inline-block;
+  font-size: 13px;
+  color: #ffffff;
+}
+
+/* ============ 最新专题 ============ */
+.topics-list {
+  display: grid;
+  grid-template-columns: repeat(3, 405px);
+  justify-content: space-between;
+}
+
+.topics-list li {
+  width: 405px;
+}
+
+.topic-img {
+  position: relative;
+  width: 405px;
+  height: 288px;
+  overflow: hidden;
+}
+
+.topic-img > img {
+  width: 405px;
+  height: 288px;
+}
+
+.topic-mask {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 405px;
+  height: 90px;
+  padding: 20px 15px 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9));
+}
+
+.topic-mask h3 {
+  font-size: 20px;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 28px;
+}
+
+.topic-mask p {
+  margin-top: 6px;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.topic-mask .price-tag {
+  position: absolute;
+  right: 15px;
+  top: 33px;
+  height: 25px;
+  line-height: 25px;
+  padding: 0 8px;
+  background: #ffffff;
+  font-size: 18px;
+  color: var(--red-2);
+}
+
+.topic-mask .price-tag i {
+  font-style: normal;
+  font-size: 15px;
+}
+
+.topic-meta {
+  display: flex;
+  align-items: center;
+  height: 67px;
+  padding: 0 15px;
+  background: #ffffff;
+}
+
+.topic-meta span {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: var(--gray-3);
+}
+
+.topic-meta span img {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+}
+
+.topic-meta span:nth-child(2) {
+  margin-left: 50px;
+}
+
+.topic-meta span:nth-child(3) {
+  margin-left: auto;
+}
+
+/* ============ 服务 ============ */
+.services {
+  background: var(--bg-gray);
+  padding: 60px 0 0;
+  margin-bottom: 0;
+}
+
+.services .container {
+  padding-bottom: 60px;
+  border-bottom: 1px solid var(--line);
+}
+
+.services-list {
+  display: flex;
+  justify-content: center;
+  gap: 96px;
+}
+
+.services-list li {
+  display: flex;
+  align-items: center;
+  width: 190px;
+}
+
+.services-list .icon {
+  width: 58px;
+  height: 58px;
+  margin-right: 20px;
+}
+
+.services-list .icon img {
+  width: 58px;
+  height: 58px;
+}
+
+.services-list h3 {
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--text);
+}
+
+/* ============ 页脚 ============ */
+.footer {
+  background: var(--bg-gray);
+}
+
+.footer .footer-top {
+  display: flex;
+  justify-content: space-between;
+  padding: 60px 0 30px;
+}
+
+.footer-links {
+  display: flex;
+}
+
+.footer-links dl {
+  margin-right: 72px;
+}
+
+.footer-links dl:last-child {
+  margin-right: 0;
+}
+
+.footer-links dt {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: var(--text);
+}
+
+.footer-links dd {
+  margin-bottom: 14px;
+  font-size: 16px;
+  color: var(--gray-2);
+}
+
+.footer-links dd a:hover {
+  color: var(--green);
+}
+
+.footer-links .online {
+  display: flex;
+  align-items: center;
+}
+
+.footer-links .online img {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+}
+
+.footer-qr {
+  display: flex;
+}
+
+.footer-qr .qr-item {
+  margin-left: 36px;
+  text-align: center;
+}
+
+.footer-qr .qr-item:first-child {
+  margin-left: 0;
+}
+
+.footer-qr img {
+  width: 120px;
+  height: 120px;
+}
+
+.footer-qr p {
+  margin-top: 10px;
+  font-size: 16px;
+  color: var(--gray-2);
+}
+
+.footer-bottom {
+  padding: 30px 0 40px;
+  text-align: center;
+  font-size: 16px;
+  color: var(--gray);
+  line-height: 30px;
+}
